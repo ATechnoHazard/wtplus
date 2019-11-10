@@ -3,7 +3,7 @@ package org.firehound.wtplus.models.customer
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import org.apache.commons.lang3.builder.ToStringBuilder
-import org.firehound.wtplus.models.Product
+import org.firehound.wtplus.models.product.Product
 
 class CustomerCart {
 
