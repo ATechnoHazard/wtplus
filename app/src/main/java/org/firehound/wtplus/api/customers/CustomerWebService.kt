@@ -15,8 +15,10 @@ interface CustomerWebService {
     suspend fun createCustomer(@Body customer: Customer): Response<String>
 
     @PUT("customers/{customerId}/update")
-    suspend fun updateCustomer(@Path("customerId") customerId: String, @Body customer: Customer):
-            Response<String>
+    suspend fun updateCustomer(
+        @Path("customerId") customerId: String,
+        @Body customer: Customer
+    ): Response<String>
 
     @DELETE("customers/{customerId}/delete")
     suspend fun deleteCustomer(@Path("customerId") customerId: String): Response<String>
