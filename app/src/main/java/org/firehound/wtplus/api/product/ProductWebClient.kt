@@ -8,7 +8,7 @@ class ProductWebClient(private val webService: ProductWebService): BaseApiClient
         webService.getAllProducts()
     }
 
-    suspend fun getProductsById(productId: String) = getResult {
+    suspend fun getProductById(productId: String) = getResult {
         webService.getProductById(productId)
     }
 

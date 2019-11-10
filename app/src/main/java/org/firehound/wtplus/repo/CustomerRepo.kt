@@ -5,7 +5,7 @@ import org.firehound.wtplus.models.customer.Customer
 
 class CustomerRepo(
     private val webClient: CustomerWebClient
-): BaseRepo() {
+) : BaseRepo() {
     suspend fun getAllCustomers() = makeRequest {
         webClient.getAllCustomers()
     }
