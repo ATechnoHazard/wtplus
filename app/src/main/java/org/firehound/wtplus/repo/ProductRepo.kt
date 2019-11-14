@@ -6,39 +6,39 @@ import org.firehound.wtplus.models.product.Product
 class ProductRepo(
     private val webClient: ProductWebClient
 ) : BaseRepo() {
-    suspend fun getAllProducts() = makeRequest {
+    fun getAllProducts() = makeRequest {
         webClient.getAllProducts()
     }
 
-    suspend fun getProductsById(productId: String) = makeRequest {
+    fun getProductsById(productId: String) = makeRequest {
         webClient.getProductById(productId)
     }
 
-    suspend fun createProduct(product: Product) = makeRequest {
+    fun createProduct(product: Product) = makeRequest {
         webClient.createProduct(product)
     }
 
-    suspend fun updateProduct(productId: String, product: Product) = makeRequest {
+    fun updateProduct(productId: String, product: Product) = makeRequest {
         webClient.updateProduct(productId, product)
     }
 
-    suspend fun deleteProduct(productId: String) = makeRequest {
+    fun deleteProduct(productId: String) = makeRequest {
         webClient.deleteProduct(productId)
     }
 
-    suspend fun getProductCategories() = makeRequest {
+    fun getProductCategories() = makeRequest {
         webClient.getProductCategories()
     }
 
-    suspend fun getProductSizes() = makeRequest {
+    fun getProductSizes() = makeRequest {
         webClient.getProductSizes()
     }
 
-    suspend fun getProductBrands() = makeRequest {
+    fun getProductBrands() = makeRequest {
         webClient.getProductBrands()
     }
 
-    suspend fun getProductByIdSku(productId: String, sku: Int) = makeRequest {
+    fun getProductByIdSku(productId: String, sku: Int) = makeRequest {
         webClient.getProductByIdSku(productId, sku)
     }
 }
