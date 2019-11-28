@@ -2,13 +2,13 @@ package org.firehound.wtplus.ui.home
 
 import GridItemDecoration
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import kotlinx.android.synthetic.main.cart_menu_item.*
+import kotlinx.android.synthetic.main.cart_menu_item.view.*
 import kotlinx.android.synthetic.main.fragment_listing.*
 
 import org.firehound.wtplus.R
@@ -30,6 +30,7 @@ class ListingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_listing, container, false)
     }
 
@@ -64,6 +65,21 @@ class ListingFragment : Fragment() {
                 Result.Status.ERROR -> {
                     toast(it.message!!)
                     product_recyclerview.hide()
+                }
+            }
+        })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        viewModel.cartLiveData.observe(viewLifecycleOwner, Observer {
+            when (it.size) {
+                0 -> {
+                    menu.findItem(R.id.action_cart).actionView.cart_badge.hide()
+                }
+                else -> {
+                    menu.findItem(R.id.action_cart).actionView.cart_badge.show()
+                    menu.findItem(R.id.action_cart).actionView.cart_badge.text = it.size.toString()
                 }
             }
         })
