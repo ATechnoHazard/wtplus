@@ -1,14 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.ProductDetailsFragment">
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedscrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.home.ProductDetailsFragment">
+
+                <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/image_slider"
+                    android:layout_width="0dp"
+                    android:layout_height="400dp"
+                    android:layout_marginBottom="32dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/details_brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="48dp"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/image_slider"
+                    tools:text="Dorothy Perkins" />
+
+                <TextView
+                    android:id="@+id/details_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@id/details_brand"
+                    app:layout_constraintTop_toBottomOf="@+id/details_brand"
+                    tools:text="Black Poly Skirt" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/size_spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/details_price"
+                    app:layout_constraintStart_toStartOf="@+id/details_name"
+                    app:layout_constraintTop_toTopOf="@+id/details_price" />
+
+                <TextView
+                    android:id="@+id/details_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginEnd="28dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/details_name"
+                    tools:text="$69.99" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:text="@string/details_desc_text"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/size_spinner"
+                    app:layout_constraintTop_toBottomOf="@+id/size_spinner" />
+
+                <TextView
+                    android:id="@+id/details_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="32dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc." />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/add_cart_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+        android:text="@string/add_to_cart"
+        app:icon="@drawable/ic_add_black_24dp"
+        app:layout_anchor="@id/nestedscrollview"
+        app:layout_anchorGravity="bottom|end" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
