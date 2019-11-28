@@ -39,6 +39,11 @@ class Product {
     @SerializedName("product_price")
     @Expose
     var productPrice: Float? = null
+    @SerializedName("product_volumes")
+    @Expose
+    var productVolumes: List<ProductVolume>? = null
+
+    var savedSize: String? = null
 
     override fun toString(): String {
         return ToStringBuilder(this).append("productName", productName)
@@ -49,6 +54,7 @@ class Product {
             .append("productStylingNote", productStylingNote)
             .append("productReservationPeriod", productReservationPeriod)
             .append("productPrice", productPrice)
+            .append("productVolumes", productVolumes)
             .append("productImages", productImages).toString()
     }
 }
