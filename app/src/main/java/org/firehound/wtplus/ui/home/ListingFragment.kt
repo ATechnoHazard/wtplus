@@ -49,13 +49,15 @@ class ListingFragment : Fragment() {
         viewModel.getAllProducts().observe(viewLifecycleOwner, Observer {
             when(it.status) {
                 Result.Status.LOADING -> {
-
+                    product_recyclerview.hide()
+                    spinkit.show()
                 }
 
                 Result.Status.SUCCESS -> {
                     if (!it.data.isNullOrEmpty()) {
                         adapter.updateData(it.data)
                         product_recyclerview.show()
+                        spinkit.hide()
                     }
                 }
 
