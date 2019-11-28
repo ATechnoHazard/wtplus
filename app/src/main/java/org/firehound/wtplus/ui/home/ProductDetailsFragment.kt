@@ -38,7 +38,7 @@ class ProductDetailsFragment : Fragment() {
 
         details_brand.text = product.productBrandName
         details_name.text = product.productName
-        details_price.text = "SGD " + product.productPrice
+        details_price.text = "$ " + product.productPrice
         details_desc.text = product.productDescription
 
         val items = product.productVolumes?.map {

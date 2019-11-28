@@ -34,69 +34,70 @@
 
                 <TextView
                     android:id="@+id/details_brand"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
                     android:layout_marginTop="48dp"
-                    android:fontFamily="@font/gilroy_semibold"
+                    android:layout_marginStart="32dp"
+                    android:fontFamily="@font/gilroy_bold"
                     android:textColor="@android:color/black"
-                    android:textSize="24sp"
+                    android:textSize="28sp"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/image_slider"
                     tools:text="Dorothy Perkins" />
 
                 <TextView
                     android:id="@+id/details_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
                     android:fontFamily="@font/gilroy_medium"
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="28sp"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/details_brand"
                     app:layout_constraintTop_toBottomOf="@+id/details_brand"
                     tools:text="Black Poly Skirt" />
-
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/size_spinner"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/details_price"
-                    app:layout_constraintStart_toStartOf="@+id/details_name"
-                    app:layout_constraintTop_toTopOf="@+id/details_price" />
 
                 <TextView
                     android:id="@+id/details_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
-                    android:layout_marginEnd="28dp"
-                    android:fontFamily="@font/gilroy_medium"
+                    android:layout_marginTop="32dp"
+                    android:fontFamily="@font/gilroy_semibold"
                     android:textColor="@color/black"
                     android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/details_name"
                     app:layout_constraintTop_toBottomOf="@+id/details_name"
                     tools:text="$69.99" />
 
                 <TextView
                     android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginTop="32dp"
-                    android:fontFamily="@font/gilroy_semibold"
+                    android:fontFamily="@font/gilroy_bold"
                     android:text="@string/details_desc_text"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="@+id/size_spinner"
-                    app:layout_constraintTop_toBottomOf="@+id/size_spinner" />
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="@+id/details_price"
+                    app:layout_constraintTop_toBottomOf="@+id/details_price" />
 
                 <TextView
                     android:id="@+id/details_desc"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="32dp"
                     android:layout_marginBottom="32dp"
+                    android:textSize="15sp"
                     android:fontFamily="@font/gilroy_medium"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

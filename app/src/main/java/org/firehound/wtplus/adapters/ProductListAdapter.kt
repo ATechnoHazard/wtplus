@@ -50,11 +50,12 @@ class ProductListAdapter(private val context: Context, val listener: (Product) -
 
         holder.product_brand.text = product.productBrandName
         holder.product_name.text = product.productName
-        holder.product_price.text = "SGD " + product.productPrice.toString()
+        holder.product_price.text = "$ " + product.productPrice.toString()
     }
 
     fun updateData(newData: List<Product>) {
-        productList = newData
+        productList = newData.reversed()
+
         notifyDataSetChanged()
     }
 

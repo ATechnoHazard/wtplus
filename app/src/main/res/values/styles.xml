@@ -9,7 +9,11 @@
     </style>
 
     <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
-        <item name="android:fontFamily">@font/gilroy_semibold</item>
+        <item name="android:fontFamily">@font/gilroy_extrabold</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">28sp</item>
     </style>
 
 </resources>
