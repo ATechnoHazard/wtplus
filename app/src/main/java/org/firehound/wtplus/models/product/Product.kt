@@ -33,6 +33,12 @@ class Product {
     @SerializedName("product_reservation_period")
     @Expose
     var productReservationPeriod: Int? = null
+    @SerializedName("product_images")
+    @Expose
+    var productImages: List<ProductImage>? = null
+    @SerializedName("product_price")
+    @Expose
+    var productPrice: Float? = null
 
     override fun toString(): String {
         return ToStringBuilder(this).append("productName", productName)
@@ -41,6 +47,8 @@ class Product {
             .append("productBrandName", productBrandName).append("productId", productId)
             .append("productCategory", productCategory).append("productColours", productColours)
             .append("productStylingNote", productStylingNote)
-            .append("productReservationPeriod", productReservationPeriod).toString()
+            .append("productReservationPeriod", productReservationPeriod)
+            .append("productPrice", productPrice)
+            .append("productImages", productImages).toString()
     }
 }

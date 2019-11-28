@@ -1,4 +1,4 @@
-package org.firehound.wtplus.ui
+package org.firehound.wtplus.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
