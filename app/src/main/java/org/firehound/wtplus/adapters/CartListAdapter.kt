@@ -10,6 +10,7 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.cart_item.*
 import org.firehound.wtplus.R
 import org.firehound.wtplus.models.product.Product
+import org.firehound.wtplus.utils.round
 import java.net.URL
 
 class CartListAdapter(private val context: Context) :
@@ -40,6 +41,7 @@ class CartListAdapter(private val context: Context) :
         holder.cartitem_brand.text = product.productBrandName
         holder.cartitem_name.text = product.productName
         holder.cartitem_size.text = "Size " + product.savedSize
+        holder.cartitem_price.text = "$ ${product.productPrice?.round(2).toString()}"
     }
 
     class CartViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),

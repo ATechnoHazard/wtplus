@@ -81,6 +81,7 @@ class ProductDetailsFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.main_menu, menu)
         val actionView = menu.findItem(R.id.action_cart).actionView
         viewModel.cartLiveData.observe(viewLifecycleOwner, Observer {
             when (it.size) {

@@ -14,9 +14,6 @@ import org.firehound.wtplus.ui.home.ProductViewModel
 import org.firehound.wtplus.utils.round
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
-/**
- * A simple [Fragment] subclass.
- */
 class CartFragment : Fragment() {
 
     private val viewModel by sharedViewModel<ProductViewModel>()
