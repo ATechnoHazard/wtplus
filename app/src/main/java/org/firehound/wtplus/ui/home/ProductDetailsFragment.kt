@@ -1,12 +1,13 @@
 package org.firehound.wtplus.ui.home
 
+import android.os.Build
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
-import kotlinx.android.synthetic.main.cart_menu_item.*
 import kotlinx.android.synthetic.main.cart_menu_item.view.*
 import kotlinx.android.synthetic.main.fragment_product_details.*
 import org.firehound.wtplus.R
@@ -35,6 +36,9 @@ class ProductDetailsFragment : Fragment() {
         val product = viewModel.selectedProduct
 
         image_slider.sliderAdapter = SliderAdapter(requireContext(), product)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            image_slider.transitionName = viewModel.selectedProduct.productId
+        }
 
         details_brand.text = product.productBrandName
         details_name.text = product.productName
@@ -63,6 +67,7 @@ class ProductDetailsFragment : Fragment() {
                     }
                 }
         }
+        startPostponedEnterTransition()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -78,6 +83,16 @@ class ProductDetailsFragment : Fragment() {
                 }
             }
         })
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            sharedElementEnterTransition =
+                TransitionInflater.from(context)
+                    .inflateTransition(android.R.transition.slide_left)
+            postponeEnterTransition()
+        }
     }
 
 }

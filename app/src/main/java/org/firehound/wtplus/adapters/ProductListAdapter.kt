@@ -1,10 +1,12 @@
 package org.firehound.wtplus.adapters
 
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
@@ -35,6 +37,9 @@ class ProductListAdapter(private val context: Context, val listener: (Product) -
         val product = productList[position]
         holder.containerView.setOnClickListener {
             listener(product)
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            holder.product_image.transitionName = product.productId!!
         }
 
         val circularProgressDrawable = CircularProgressDrawable(context)

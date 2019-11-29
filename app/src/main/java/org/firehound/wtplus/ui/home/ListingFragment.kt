@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.android.synthetic.main.cart_menu_item.*
 import kotlinx.android.synthetic.main.cart_menu_item.view.*
 import kotlinx.android.synthetic.main.fragment_listing.*
+import kotlinx.android.synthetic.main.product_recyclerview_item.*
 
 import org.firehound.wtplus.R
 import org.firehound.wtplus.adapters.ProductListAdapter
@@ -39,7 +41,10 @@ class ListingFragment : Fragment() {
         val adapter = ProductListAdapter(requireContext()) {
             viewModel.selectedProduct = it
             val action = ListingFragmentDirections.actionListingFragmentToProductDetailsFragment()
-            findNavController().navigate(action)
+            val extras = FragmentNavigatorExtras(
+                product_image to it.productId!!
+            )
+            findNavController().navigate(action, extras)
         }
 
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)

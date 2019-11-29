@@ -9,8 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:minWidth="150dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:minWidth="150dp">
 
         <ImageView
             android:id="@+id/product_image"
@@ -20,16 +20,17 @@
             android:scaleType="fitXY"
             android:src="@drawable/ic_launcher_background"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/product_price"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/product_price"
             android:layout_width="0dp"
-            android:layout_marginEnd="16dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/gilroy_semibold"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             app:layout_constraintEnd_toEndOf="parent"
