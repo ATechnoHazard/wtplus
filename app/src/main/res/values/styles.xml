@@ -9,12 +9,13 @@
         <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
     </style>
 
-    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.ActionBar">
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:fontFamily">@font/gilroy_extrabold</item>
     </style>
 
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
 </resources>

@@ -6,4 +6,5 @@
     <string name="add_to_cart">Add to cart</string>
     <string name="details_desc_text">About the product</string>
     <string name="size_select_dialog_text">Select a size</string>
+    <string name="checkout_fab_text">Checkout</string>
 </resources>
