@@ -53,7 +53,7 @@ class ListingFragment : Fragment() {
         product_recyclerview.layoutManager = layoutManager
 
         viewModel.getAllProducts().observe(viewLifecycleOwner, Observer {
-            when(it.status) {
+            when (it.status) {
                 Result.Status.LOADING -> {
                     product_recyclerview.hide()
                     spinkit.show()
@@ -77,16 +77,25 @@ class ListingFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
+        val actionView = menu.findItem(R.id.action_cart).actionView
         viewModel.cartLiveData.observe(viewLifecycleOwner, Observer {
             when (it.size) {
                 0 -> {
-                    menu.findItem(R.id.action_cart).actionView.cart_badge.hide()
+                    actionView.cart_badge.hide()
                 }
                 else -> {
-                    menu.findItem(R.id.action_cart).actionView.cart_badge.show()
-                    menu.findItem(R.id.action_cart).actionView.cart_badge.text = it.size.toString()
+                    actionView.cart_badge.show()
+                    actionView.cart_badge.text = it.size.toString()
                 }
             }
         })
+        actionView.setOnClickListener {
+            if (viewModel.cartLiveData.value.isNullOrEmpty()) {
+                toast("Your cart is empty!")
+            } else {
+                val action = ListingFragmentDirections.actionListingFragmentToCartFragment()
+                findNavController().navigate(action)
+            }
+        }
     }
 }

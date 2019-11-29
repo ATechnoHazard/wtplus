@@ -21,8 +21,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel by viewModel<ProductViewModel>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,20 +32,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
-        val actionView = menu?.findItem(R.id.action_cart)?.actionView
-        actionView?.setOnClickListener {
-            onOptionsItemSelected(menu.findItem(R.id.action_cart))
-        }
         return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_cart -> {
-                toast(viewModel.cartLiveData.value?.size.toString())
-                return true
-            }
-        }
-        return false
     }
 }

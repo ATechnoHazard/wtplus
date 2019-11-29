@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/listingFragment"
         android:name="org.firehound.wtplus.ui.home.ListingFragment"
-        android:label="Reservations"
+        android:label="Catalog"
         tools:layout="@layout/fragment_listing">
         <action
             android:id="@+id/action_listingFragment_to_productDetailsFragment"
@@ -17,10 +17,22 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_listingFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="org.firehound.wtplus.ui.home.ProductDetailsFragment"
-        android:label="Product Details"
-        tools:layout="@layout/fragment_product_details" />
+        android:label="Details"
+        tools:layout="@layout/fragment_product_details">
+        <action
+            android:id="@+id/action_productDetailsFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="org.firehound.wtplus.CartFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart" />
 </navigation>

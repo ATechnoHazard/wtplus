@@ -6,6 +6,7 @@ import android.transition.TransitionInflater
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import kotlinx.android.synthetic.main.cart_menu_item.view.*
@@ -72,17 +73,27 @@ class ProductDetailsFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
+        val actionView = menu.findItem(R.id.action_cart).actionView
         viewModel.cartLiveData.observe(viewLifecycleOwner, Observer {
             when (it.size) {
                 0 -> {
-                    menu.findItem(R.id.action_cart).actionView.cart_badge.hide()
+                    actionView.cart_badge.hide()
                 }
                 else -> {
-                    menu.findItem(R.id.action_cart).actionView.cart_badge.show()
-                    menu.findItem(R.id.action_cart).actionView.cart_badge.text = it.size.toString()
+                    actionView.cart_badge.show()
+                    actionView.cart_badge.text = it.size.toString()
                 }
             }
         })
+        actionView.setOnClickListener {
+            if (viewModel.cartLiveData.value.isNullOrEmpty()) {
+                toast("Your cart is empty!")
+            } else {
+                val action =
+                    ProductDetailsFragmentDirections.actionProductDetailsFragmentToCartFragment()
+                findNavController().navigate(action)
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
