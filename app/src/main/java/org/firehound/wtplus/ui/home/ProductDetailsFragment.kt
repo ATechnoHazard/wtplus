@@ -54,7 +54,7 @@ class ProductDetailsFragment : Fragment() {
             MaterialDialog(requireContext())
                 .title(R.string.size_select_dialog_text)
                 .show {
-                    listItemsSingleChoice(items = items) { dialog, _, text ->
+                    listItemsSingleChoice(items = items?.sorted()) { dialog, _, text ->
                         val insertItem = Product()
 
                         insertItem.apply {
@@ -64,6 +64,7 @@ class ProductDetailsFragment : Fragment() {
                             productPrice = product.productPrice
                             productBrandName = product.productBrandName
                             productImages = product.productImages
+                            productQuantity = 1
                         }
 
                         if (viewModel.addToCart(insertItem)) {
@@ -74,6 +75,7 @@ class ProductDetailsFragment : Fragment() {
                             dialog.dismiss()
                         }
                     }
+                    positiveButton(R.string.positive_dialog_text)
                 }
         }
         startPostponedEnterTransition()

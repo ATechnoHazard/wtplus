@@ -42,6 +42,9 @@ class Product {
     @SerializedName("product_volumes")
     @Expose
     var productVolumes: List<ProductVolume>? = null
+    @SerializedName("product_quantity")
+    @Expose
+    var productQuantity: Int? = null
 
     var savedSize: String? = null
 

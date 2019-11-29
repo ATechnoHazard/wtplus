@@ -14,7 +14,7 @@ interface ReservationsWebService {
 
     @POST("reservations/create")
     suspend fun createReservation(@Body reservation: Reservation):
-            Response<CreateReservationResponse>
+            Response<String>
 
     @PUT("reservations/{resId}/update")
     suspend fun updateReservation(

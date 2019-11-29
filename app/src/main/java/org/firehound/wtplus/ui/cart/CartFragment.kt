@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_cart.*
 import org.firehound.wtplus.R
@@ -39,14 +40,13 @@ class CartFragment : Fragment() {
         viewModel.cartLiveData.observe(viewLifecycleOwner, Observer {
             if (!it.isNullOrEmpty()) {
                 cartAdapter.updateData(it)
-                var total = 0.0f
-                it.forEach {product ->
-                    total += product.productPrice!!
-                }
-                cart_total.text = "$ ${total.round(2)}"
+                cart_total.text = "$ ${viewModel.getCartTotal()}"
             }
         })
 
+        proceed_fab.setOnClickListener {
+            val action = CartFragmentDirections.actionCartFragmentToCheckoutFragment()
+            findNavController().navigate(action)
+        }
     }
-
 }

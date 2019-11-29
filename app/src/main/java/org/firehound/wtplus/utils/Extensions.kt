@@ -2,6 +2,7 @@ package org.firehound.wtplus.utils
 
 import android.app.Activity
 import android.content.Context
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,4 +62,12 @@ fun Float.round(decimalPlace: Int): Float {
     var bd = BigDecimal(toString())
     bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP)
     return bd.toFloat()
+}
+
+fun String.isValidEmail(): Boolean {
+    return Patterns.EMAIL_ADDRESS.matcher(this).matches()
+}
+
+fun String.isValidPhone(): Boolean {
+    return Patterns.PHONE.matcher(this).matches()
 }

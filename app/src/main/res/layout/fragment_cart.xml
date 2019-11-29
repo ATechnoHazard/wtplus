@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gilroy_semibold"
-            android:text="Total"
+            android:text="@string/cart_total_text"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/cart_total"
@@ -49,15 +49,16 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/proceed_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/checkout_fab_text"
+        android:text="@string/checkout_fab_next"
         android:textColor="@android:color/white"
         app:iconTint="@android:color/white"
         app:backgroundTint="@android:color/black"
         app:layout_anchor="@id/main_view"
         app:layout_anchorGravity="bottom|end"
         android:layout_margin="16dp"
-        app:icon="@drawable/ic_check_black_24dp"/>
+        app:icon="@drawable/ic_arrow_forward_black_24dp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

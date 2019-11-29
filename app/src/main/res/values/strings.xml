@@ -7,4 +7,14 @@
     <string name="details_desc_text">About the product</string>
     <string name="size_select_dialog_text">Select a size</string>
     <string name="checkout_fab_text">Checkout</string>
+    <string name="cart_total_text">Total</string>
+    <string name="positive_dialog_text">Choose size</string>
+    <string name="name_checkout_edittext">Name</string>
+    <string name="email_checkout_edittext">Email</string>
+    <string name="phone_checkout_edittext">Phone</string>
+    <string name="member_checkout_text">Are you a wt+ member?</string>
+    <string name="yes_checkout_radio">Yes</string>
+    <string name="no_checkout_radio">No</string>
+    <string name="header_checkout_text">Please enter your details to complete the reservation</string>
+    <string name="checkout_fab_next">Proceed</string>
 </resources>
