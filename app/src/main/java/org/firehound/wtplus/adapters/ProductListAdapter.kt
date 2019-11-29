@@ -21,7 +21,7 @@ class ProductListAdapter(private val context: Context, val listener: (Product) -
 
     private var productList: List<Product> = mutableListOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ProductViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.product_recyclerview_item,
@@ -60,7 +60,6 @@ class ProductListAdapter(private val context: Context, val listener: (Product) -
 
     fun updateData(newData: List<Product>) {
         productList = newData.reversed()
-
         notifyDataSetChanged()
     }
 

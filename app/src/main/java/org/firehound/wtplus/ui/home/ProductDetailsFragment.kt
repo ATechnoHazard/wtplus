@@ -56,8 +56,16 @@ class ProductDetailsFragment : Fragment() {
                 .show {
                     listItemsSingleChoice(items = items) { dialog, _, text ->
                         val insertItem = Product()
-                        insertItem.productId = product.productId
-                        insertItem.savedSize = text.toString()
+
+                        insertItem.apply {
+                            productId = product.productId
+                            savedSize = text.toString()
+                            productName = product.productName
+                            productPrice = product.productPrice
+                            productBrandName = product.productBrandName
+                            productImages = product.productImages
+                        }
+
                         if (viewModel.addToCart(insertItem)) {
                             toast("Item added to cart.")
                             dialog.dismiss()

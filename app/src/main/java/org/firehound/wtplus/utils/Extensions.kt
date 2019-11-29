@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import java.math.BigDecimal
 
 fun Context.longToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
@@ -48,4 +49,16 @@ fun Fragment.toast(message: String) {
 
 fun Fragment.longToast(message: String) {
     requireContext().longToast(message)
+}
+
+/**
+ * Round to certain number of decimals
+ *
+ * @param decimalPlace Int
+ * @return float
+ */
+fun Float.round(decimalPlace: Int): Float {
+    var bd = BigDecimal(toString())
+    bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP)
+    return bd.toFloat()
 }

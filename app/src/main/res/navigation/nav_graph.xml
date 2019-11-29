@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="org.firehound.wtplus.CartFragment"
+        android:name="org.firehound.wtplus.ui.cart.CartFragment"
         android:label="Cart"
         tools:layout="@layout/fragment_cart" />
 </navigation>
