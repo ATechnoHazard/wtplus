@@ -17,4 +17,6 @@
     <string name="no_checkout_radio">No</string>
     <string name="header_checkout_text">Please enter your details to complete the reservation</string>
     <string name="checkout_fab_next">Proceed</string>
+    <string name="discount_applied">A discount of 15% has been applied to your order.</string>
+    <string name="discount_applied_title">Thank you!</string>
 </resources>

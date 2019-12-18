@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import com.afollestad.materialdialogs.MaterialDialog
 import kotlinx.android.synthetic.main.fragment_checkout.*
 import org.firehound.wtplus.R
 import org.firehound.wtplus.models.Result
@@ -35,8 +36,23 @@ class CheckoutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         checkout_radiogroup.setOnCheckedChangeListener { _, i ->
-            cartViewModel.isWtMember = i == R.id.yes_radio
+            cartViewModel.isWtMember.postValue(i == R.id.yes_radio)
         }
+
+        cartViewModel.isWtMember.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                val dupes = productViewModel.cartLiveData.value?.groupingBy { product -> product.productBrandName }
+                    ?.eachCount()?.filter { entry ->
+                        entry.value > 1
+                    }
+                if (!dupes.isNullOrEmpty()) {
+                    MaterialDialog(requireContext()).show {
+                        title(R.string.discount_applied_title)
+                        message(R.string.discount_applied)
+                    }
+                }
+            }
+        })
 
         reservation_fab.setOnClickListener {
             val emailText = checkout_email_edittext.editText?.text.toString()
@@ -73,12 +89,12 @@ class CheckoutFragment : Fragment() {
                 customerMobile = phNo
                 customerName = name
                 isVegan = true
-                isWtMember = cartViewModel.isWtMember
+                isWtMember = cartViewModel.isWtMember.value
                 reservationSlot = "11:00 AM - 12:00 Noon"
                 customerUid = "WT+${Random.nextInt()}"
             }
             cartViewModel.createReservation(req).observe(viewLifecycleOwner, Observer {
-                when(it.status) {
+                when (it.status) {
                     Result.Status.LOADING -> {
 
                     }
